@@ -1,4 +1,5 @@
 # 🤖 Telegram Translator Bot
+## لینک ربات : https://t.me/Translate_proapp_bot
 
 یک ربات تلگرام ساده، سریع و کاربردی برای **ترجمه خودکار بین فارسی و انگلیسی** با رابط کاربری دکمه‌ای و ذخیره تنظیمات زبان هر کاربر.
 
@@ -120,6 +121,8 @@ Web & Telegram Bot Developer 💻🤖
 ---
 
 # 🌍 Telegram Translator Bot (English Version)
+
+##  Robot Link : https://t.me/Translate_proapp_bot
 
 A simple, fast, and practical Telegram bot for **automatic Persian ⇄ English translation**, featuring interactive buttons and per-user language settings.
 
