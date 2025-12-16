@@ -7,19 +7,9 @@ welcome_text_fa = """
 💡 دستورات مفید:
 - /help - راهنمای استفاده
 - /about - درباره ربات
+- /languages - تغییر زبان ربات
 """
 
-# --- انگلیسی ---
-welcome_text_en = """
-Hi there! 👋
-I’m your translation bot! 🌍✨
-Just type the text you want to translate. 📝➡️🌐
-
-💡 Useful commands:
-- /help - Help & instructions
-- /about - About this bot
-"""
-# --- فارسی ---
 help_text_fa = """
 🌟 راهنمای ربات مترجم 🌟
 
@@ -31,26 +21,10 @@ help_text_fa = """
 
 💡 نکات مفید:
 - می‌تونید متن‌های طولانی هم ارسال کنید (تا 5000 کاراکتر)  
-- برای دستورها از /help و /about استفاده کنید  
+- برای دستورها از /help و /about و /languages استفاده کنید  
 - من می‌تونم زبان متن شما را خودکار تشخیص بدم! 🤖
 """
 
-# --- انگلیسی ---
-help_text_en = """
-🌟 Translation Bot Help 🌟
-
-Hello! 👋
-To translate your text, just follow these steps:
-
-1️⃣ Type the text you want to translate 📝  
-2️⃣ Your translation is ready! ✅  
-
-💡 Useful Tips:
-- You can send long texts too (up to 5000 characters)  
-- Use /help and /about for commands  
-- I can automatically detect the language of your text! 🤖
-"""
-# --- فارسی ---
 about_text_fa = """
 🤖 درباره سازنده ربات 🤖
 
@@ -71,6 +45,32 @@ about_text_fa = """
 """
 
 # --- انگلیسی ---
+welcome_text_en = """
+Hi there! 👋
+I’m your translation bot! 🌍✨
+Just type the text you want to translate. 📝➡️🌐
+
+💡 Useful commands:
+- /help - Help & instructions
+- /about - About this bot
+- /languages - Change bot language
+"""
+
+help_text_en = """
+🌟 Translation Bot Help 🌟
+
+Hello! 👋
+To translate your text, just follow these steps:
+
+1️⃣ Type the text you want to translate 📝  
+2️⃣ Your translation is ready! ✅  
+
+💡 Useful Tips:
+- You can send long texts too (up to 5000 characters)  
+- Use /help, /about, and /languages for commands  
+- I can automatically detect the language of your text! 🤖
+"""
+
 about_text_en = """
 🤖 About the Creator 🤖
 
@@ -89,17 +89,22 @@ I created this bot to make text translation easy and fast for you! 🌍📝
 
 Hope you enjoy using the bot and have a great experience! 😄✨
 """
+
+languages_text_fa = "🌐 لطفاً زبان ربات را انتخاب کنید:\n- 🇬🇧 English\n- 🇮🇷 فارسی"
+languages_text_en = "🌐 Please choose your bot language:\n- 🇬🇧 English\n- 🇮🇷 Persian"
+
 text = {
-    'fa':
-        {
-            'welcome' : welcome_text_fa,
-            'help':help_text_fa,
-            'about' : about_text_fa
-        },
-    'en':
-        {
-            'welcome' : welcome_text_en,
-            'help':help_text_en,
-            'about' : about_text_en
-        }
+    'fa': {
+        'welcome': welcome_text_fa,
+        'help': help_text_fa,
+        'about': about_text_fa,
+        'languages': languages_text_fa
+    },
+    'en': {
+        'welcome': welcome_text_en,
+        'help': help_text_en,
+        'about': about_text_en,
+        'languages': languages_text_en
+    }
 }
+alarm_start_bot = f'👋 Hey there! Please first /start the bot! 🌟'
