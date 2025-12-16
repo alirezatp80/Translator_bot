@@ -4,6 +4,7 @@ import dotenv , os
 from deep_translator import GoogleTranslator
 from texts import text
 from button import delete_msg
+from utility import detect_lang
 
 dotenv.load_dotenv()
 
@@ -34,6 +35,24 @@ def Welcome_func(message : Message):
 def callback(call):
     if call.data == 'delete_message':
         bot.delete_message(call.message.chat.id , call.message.message_id)
+        
+@bot.message_handler(func=lambda message :True)
+def translate_message(message:Message):
+    text = str(message.text)
+    # bot.send_message(message.chat.id , 'عاشقتم:)')
+    lang = detect_lang(text)
+    if lang == 'en' :
+        translate = GoogleTranslator(source='en' , target='fa')
+        result = translate.translate(text)
+    elif lang == 'fa':
+        translate = GoogleTranslator(source='fa' , target='en')
+        result = translate.translate(text)
+    else:
+        translate_1 = GoogleTranslator(source='en' , target='fa')
+        translate_2 = GoogleTranslator(source='fa' , target='en')
+        result = f'{translate_1.translate(text)}\n{translate_2.translate(text)}'
+    bot.reply_to(message , result  )
+        
     
 
 
