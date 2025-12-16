@@ -1,8 +1,8 @@
 # --- فارسی ---
 welcome_text_fa = """
-سلام! 👋
+👋 سلام دوست من!
 من ربات مترجم تو هستم! 🌍✨
-کافیست متنی که میخوای ترجمه بشه رو اینجا وارد کنی. 📝➡️🌐
+کافیست متنی که میخوای ترجمه بشه رو اینجا وارد کنی 📝➡️🌐
 
 💡 دستورات مفید:
 - /help - راهنمای استفاده
@@ -16,12 +16,12 @@ help_text_fa = """
 سلام! 👋
 برای ترجمه متن، کافیست مراحل زیر را دنبال کنید:
 
-1️⃣ متنی که میخواید ترجمه بشه رو اینجا وارد کنید 📝  
-2️⃣ ترجمه آماده است! ✅  
+1️⃣ متن مورد نظر خود را وارد کنید 📝  
+2️⃣ ترجمه شما آماده است! ✅  
 
 💡 نکات مفید:
 - می‌تونید متن‌های طولانی هم ارسال کنید (تا 5000 کاراکتر)  
-- برای دستورها از /help و /about و /languages استفاده کنید  
+- برای دستورها از /help، /about و /languages استفاده کنید  
 - من می‌تونم زبان متن شما را خودکار تشخیص بدم! 🤖
 """
 
@@ -29,8 +29,8 @@ about_text_fa = """
 🤖 درباره سازنده ربات 🤖
 
 سلام! 👋
-من علیرضا تشانی هستم، برنامه‌نویس وب و توسعه‌دهنده ربات‌ها. 💻✨
-این ربات رو ساختم تا تجربه ترجمه متن برای شما راحت و سریع باشه! 🌍📝
+من علیرضا تشانی هستم، برنامه‌نویس وب و توسعه‌دهنده ربات‌ها 💻✨
+این ربات را ساخته‌ام تا تجربه ترجمه برای شما ساده و سریع باشد 🌍📝
 
 🛠️ مهارت‌ها:
 - توسعه وب و برنامه‌نویسی Backend 🌐  
@@ -41,14 +41,16 @@ about_text_fa = """
 - ایمیل: alirezatd80@gmail.com ✉️  
 - گیت‌هاب: https://github.com/alirezatp80 🐙  
 
-امیدوارم از ربات استفاده کنی و تجربه خوبی داشته باشی! 😄✨
+امیدوارم از ربات استفاده کنید و تجربه خوبی داشته باشید! 😄✨
 """
+
+languages_text_fa = "🌐 لطفاً زبان ربات را انتخاب کنید:\n- 🇬🇧 English\n- 🇮🇷 فارسی"
 
 # --- انگلیسی ---
 welcome_text_en = """
-Hi there! 👋
+👋 Hi there!
 I’m your translation bot! 🌍✨
-Just type the text you want to translate. 📝➡️🌐
+Just type the text you want to translate 📝➡️🌐
 
 💡 Useful commands:
 - /help - Help & instructions
@@ -62,21 +64,21 @@ help_text_en = """
 Hello! 👋
 To translate your text, just follow these steps:
 
-1️⃣ Type the text you want to translate 📝  
+1️⃣ Type your text 📝  
 2️⃣ Your translation is ready! ✅  
 
 💡 Useful Tips:
 - You can send long texts too (up to 5000 characters)  
 - Use /help, /about, and /languages for commands  
-- I can automatically detect the language of your text! 🤖
+- I can automatically detect your text's language 🤖
 """
 
 about_text_en = """
 🤖 About the Creator 🤖
 
 Hello! 👋
-I’m Alireza Tashani, a web developer and bot developer. 💻✨
-I created this bot to make text translation easy and fast for you! 🌍📝
+I’m Alireza Tashani, a web & bot developer 💻✨
+I created this bot to make text translation easy and fast for you 🌍📝
 
 🛠️ Skills:
 - Web development (Backend) 🌐  
@@ -90,7 +92,6 @@ I created this bot to make text translation easy and fast for you! 🌍📝
 Hope you enjoy using the bot and have a great experience! 😄✨
 """
 
-languages_text_fa = "🌐 لطفاً زبان ربات را انتخاب کنید:\n- 🇬🇧 English\n- 🇮🇷 فارسی"
 languages_text_en = "🌐 Please choose your bot language:\n- 🇬🇧 English\n- 🇮🇷 Persian"
 
 text = {
@@ -107,4 +108,6 @@ text = {
         'languages': languages_text_en
     }
 }
-alarm_start_bot = f'👋 Hey there! Please first /start the bot! 🌟'
+
+# پیام هشدار وقتی کاربر هنوز /start نزده
+alarm_start_bot = "👋 Hey! Please first /start the bot to get started! 🌟"
