@@ -1,40 +1,84 @@
 from telebot import TeleBot
-from telebot.types import Message
+from telebot.types import Message ,CallbackQuery
 import dotenv , os
 from deep_translator import GoogleTranslator
 from texts import text
-from button import delete_msg
-from utility import detect_lang
+from button import delete_msg ,set_lang
+from utility import detect_lang ,create_db,insert_user,select_all,select_user , set_language
+import time
 
 dotenv.load_dotenv()
 
 TOKEN = os.getenv('TOKEN')
 bot = TeleBot(TOKEN)
+create_db()
+message_delete = {}
 
 @bot.message_handler(commands=['start' , 'help' , 'about'])
 def Welcome_func(message : Message):
-    user_language = 'en'
     
-    if user_language == '' :
-        pass
-    #   set userlanguage
-    else:
-        if message.text == '/start':
+    if message.text == '/start':
+        user = select_user(message.from_user.id)
+        if not user:
+            user = message.from_user
+            message_delete['select_language_id']=bot.send_message(message.chat.id , 'please enter your language:' , reply_markup=set_lang()).id
             bot.delete_message(message.chat.id , message.message_id)
-            bot.send_message(message.chat.id ,f'{text[user_language]['welcome']}' )
-        if message.text == '/help':
+        else:
+            bot.send_message(message.chat.id ,f'{text[user[2]]['welcome']}' )
+        
+        
+        
+    user = select_user(message.from_user.id)        
+            
+            
+    if message.text == '/help':
+        if not user :
+            bot.send_message(message.chat.id , f'please first /start bot')
+        else:
             bot.delete_message(message.chat.id , message.message_id)
-            bot.send_message(message.chat.id ,f'{text[user_language]['help']}',reply_markup=delete_msg() )
-
-        if message.text == '/about':
+            bot.send_message(message.chat.id ,f'{text[user[2]]['help']}',reply_markup=delete_msg() )
+    if message.text == '/about':
+        if not user :
+            bot.send_message(message.chat.id , f'please first /start bot')
+        else:
             bot.delete_message(message.chat.id , message.message_id)
-            bot.send_message(message.chat.id ,f'{text[user_language]['about']}',reply_markup=delete_msg() )
+            bot.send_message(message.chat.id ,f'{text[user[2]]['about']}',reply_markup=delete_msg() )
+    
+    
 
     
 @bot.callback_query_handler(func=lambda call : True)
-def callback(call):
+def callback(call:CallbackQuery):
     if call.data == 'delete_message':
         bot.delete_message(call.message.chat.id , call.message.message_id)
+    if call.data == 'set_english_lang':
+        user = select_user(call.from_user.id)
+        if not user:
+            my_user = call.from_user
+            insert_user(my_user.id , my_user.username, 'en')
+            bot.send_message(call.message.chat.id ,f'{text['en']['welcome']}' )
+            
+        else:
+            
+            set_language((call.from_user.id) , 'en')  
+        bot.delete_message(call.message.chat.id , message_delete['select_language_id'])  
+        del message_delete['select_language_id']    
+            
+        
+        
+    elif call.data == 'set_farsi_lang':
+        user = select_user(call.from_user.id)
+        if not user:
+            my_user = call.from_user
+            insert_user(my_user.id , my_user.username, 'fa')
+            bot.send_message(call.message.chat.id ,f'{text['fa']['welcome']}')
+        else:
+            
+            set_language((call.from_user.id) , 'fa')  
+        
+        bot.delete_message(call.message.chat.id , message_delete['select_language_id'])  
+        del message_delete['select_language_id']
+
         
 @bot.message_handler(func=lambda message :True)
 def translate_message(message:Message):
@@ -52,7 +96,8 @@ def translate_message(message:Message):
         translate_2 = GoogleTranslator(source='fa' , target='en')
         result = f'{translate_1.translate(text)}\n{translate_2.translate(text)}'
     bot.reply_to(message , result  )
-        
+    
+
     
 
 
